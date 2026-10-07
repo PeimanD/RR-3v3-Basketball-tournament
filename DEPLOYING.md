@@ -85,6 +85,6 @@ vercel --prod
 
 ## Troubleshooting
 
-- **"Server setup isn't finished" in the menu.** A database or login variable is missing, or the project hasn't been redeployed since you added it.
+- **"Server setup isn't finished" in the menu.** A database or login variable is missing, or the project hasn't been redeployed since you added it. The menu shows which database variable names the server can see (never their values). You can also open `/api/session` on your site to see the same check. Database variables with a custom prefix, such as `STORAGE_REST_API_URL`, are found automatically.
 - **"Can't reach the server".** You opened the HTML file directly. Use the vercel.app address instead.
 - **"A newer version was saved from another device".** Two phones published. Publish again to keep your version, or tap Discard to load the other one.

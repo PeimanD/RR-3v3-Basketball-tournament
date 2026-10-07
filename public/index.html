@@ -550,7 +550,7 @@ let published = normalize(readEmbedded());
 let draft = null;          // working copy while editing
 let editing = false;
 let organizer = null;      // null while checking, then true/false
-let server = { reachable: null, database: null, login: null };
+let server = { reachable: null, database: null, login: null, hint: '' };
 let publishing = false;
 let signingIn = false, signinError = '';
 let pubError = '';
@@ -1445,6 +1445,7 @@ async function checkSession() {
     server.reachable = true;
     server.database = !!r.data.database;
     server.login = !!r.data.login;
+    server.hint = typeof r.data.databaseHint === 'string' ? r.data.databaseHint : '';
     organizer = !!r.data.organizer;
   } else {
     organizer = false;
@@ -1568,7 +1569,8 @@ function renderSheet() {
       '<p class="fine">Sign-in works on your deployed Vercel site, for example your-project.vercel.app, not on a copy of the file.</p></div></div>';
   } else if (!organizer && (server.login === false || server.database === false)) {
     html += '<div class="signin"><span class="signin-dot" aria-hidden="true"></span><div><p>Server setup isn\u2019t finished.</p>' +
-      (server.database === false ? '<p class="fine">Connect an Upstash Redis database to this project in Vercel (Storage tab).</p>' : '') +
+      (server.database === false ? '<p class="fine">Connect an Upstash Redis database to this project in Vercel (Storage tab).</p>' +
+        (server.hint ? `<p class="fine"><strong>What the server sees:</strong> ${esc(server.hint)}</p>` : '') : '') +
       (server.login === false ? '<p class="fine">Add ADMIN_USERNAME, ADMIN_PASSWORD and SESSION_SECRET (at least 16 characters) as environment variables in Vercel.</p>' : '') +
       '<p class="fine">Then redeploy the project.</p></div></div>';
   } else if (!organizer) {

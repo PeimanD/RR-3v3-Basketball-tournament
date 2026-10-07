@@ -4,5 +4,7 @@ import { isOrganizer, setupStatus, send } from '../lib/server.js';
 
 export default function handler(req, res) {
   const setup = setupStatus();
-  return send(res, 200, { organizer: isOrganizer(req), database: setup.database, login: setup.login });
+  const body = { organizer: isOrganizer(req), database: setup.database, login: setup.login };
+  if (!setup.database) body.databaseHint = setup.databaseHint;
+  return send(res, 200, body);
 }
