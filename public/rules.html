@@ -1,0 +1,145 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Game rules | 3v3 Round Robin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+  --bg:#EDF0F4; --surface:#FFFFFF; --ink:#14202B; --ink-2:#465564; --ink-3:#6B7987;
+  --line:#D3DAE2; --accent:#C24E0E; --accent-bright:#F2843A;
+  --court:#1B466D; --court-2:#255985; --court-ink:#FFFFFF; --court-ink-2:rgba(255,255,255,.76); --paint:rgba(255,255,255,.5);
+  --font:"Barlow","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --font-cond:"Barlow Condensed","Arial Narrow","Roboto Condensed","Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0D141C; --surface:#151F2A; --ink:#E5EBF1; --ink-2:#A6B3C0; --ink-3:#7C8A98;
+    --line:#2A3745; --accent:#FF8A45; --accent-bright:#FF8A45;
+    --court:#12304C; --court-2:#1A3F62; --court-ink:#F1F5F9; --court-ink-2:rgba(241,245,249,.72); --paint:rgba(235,242,248,.42);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0D141C; --surface:#151F2A; --ink:#E5EBF1; --ink-2:#A6B3C0; --ink-3:#7C8A98;
+  --line:#2A3745; --accent:#FF8A45; --accent-bright:#FF8A45;
+  --court:#12304C; --court-2:#1A3F62; --court-ink:#F1F5F9; --court-ink-2:rgba(241,245,249,.72); --paint:rgba(235,242,248,.42);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);font-weight:600;text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:640px;margin:0 auto;padding:18px 16px 40px}
+.back{display:inline-block;margin-bottom:14px;font-size:15px}
+.hero{padding:18px 20px 16px;border-radius:14px;background:var(--court);color:var(--court-ink);outline:2px solid var(--paint);outline-offset:-7px}
+h1{margin:0;font:700 32px/1.05 var(--font-cond)}
+.hero p{margin:6px 0 0;color:var(--court-ink-2);font-size:15px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0 2px;padding:0;list-style:none}
+.facts li{padding:10px 10px 9px;border-radius:9px;background:var(--court-2)}
+.facts b{display:block;font:700 24px/1 var(--font-cond)}
+.facts span{display:block;margin-top:4px;font-size:12.5px;line-height:1.3;color:var(--court-ink-2)}
+section{padding:20px 0 4px;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+h2{margin:0 0 8px;font:700 23px/1.1 var(--font-cond)}
+h3{margin:16px 0 6px;font-size:16px;font-weight:700}
+p{margin:0 0 10px}
+ul,ol{margin:0 0 12px;padding-left:22px}
+li{margin:0 0 7px}
+li::marker{color:var(--ink-3)}
+ol.ranked li::marker{font-weight:700;color:var(--accent)}
+.muted{color:var(--ink-2)}
+.round{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0 0 12px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.round .tag{grid-row:span 2;align-self:start;font:700 20px/1.15 var(--font-cond);color:var(--accent)}
+.round p{margin:0}
+.round .rest{font-size:14px;color:var(--ink-2)}
+footer{margin-top:22px;font-size:14px;color:var(--ink-3)}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="back" href="./">Back to scores</a>
+
+  <div class="hero">
+    <h1>Game rules</h1>
+    <p>3v3 half court. These rules are written for 5 teams on 2 courts.</p>
+    <ul class="facts">
+      <li><b>12</b><span>minute cap per game</span></li>
+      <li><b>15</b><span>points to win</span></li>
+      <li><b>2s &amp; 3s</b><span>inside and beyond the arc</span></li>
+    </ul>
+  </div>
+
+  <section aria-labelledby="games">
+    <h2 id="games">Games</h2>
+    <ul>
+      <li>A game ends when a team reaches 15 or the 12-minute clock runs out, whichever comes first.</li>
+      <li>If the score is tied when time runs out, play on: the next basket wins. Every game has a winner.</li>
+      <li>Baskets count 2 inside the arc and 3 beyond it. Many games will end before the 12-minute cap.</li>
+      <li>Every team plays every other team once. Two games run at a time and one team sits each round.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="standings">
+    <h2 id="standings">Standings and tiebreakers</h2>
+    <p>Teams are ranked by wins. Points can be gamed or misleading, so they only break ties:</p>
+    <ol class="ranked">
+      <li>Wins</li>
+      <li>Head-to-head result (two-team ties only)</li>
+      <li>Point differential. Games end at 15, so blowouts can&rsquo;t distort it much.</li>
+    </ol>
+    <p class="muted">If teams are still level after that: points scored, then a coin flip. When a tiebreaker splits a three-way tie and two teams are still level, those two go back to head-to-head.</p>
+  </section>
+
+  <section aria-labelledby="playoffs">
+    <h2 id="playoffs">Playoffs</h2>
+    <p>Everyone plays. Three rounds, about 45 minutes.</p>
+    <div class="round">
+      <span class="tag">Round 1</span>
+      <p>Seed 2 vs seed 3, and seed 4 vs seed 5.</p>
+      <p class="rest">The 1 seed rests, a reward for winning the pool.</p>
+    </div>
+    <div class="round">
+      <span class="tag">Round 2</span>
+      <p>Seed 1 vs the winner of 4 vs 5. The two round 1 losers play a consolation game.</p>
+      <p class="rest">The winner of 2 vs 3 rests.</p>
+    </div>
+    <div class="round">
+      <span class="tag">Round 3</span>
+      <p>Final: the winner of 2 vs 3 against the winner of seed 1&rsquo;s round 2 game.</p>
+      <p class="rest">On the other court, the 3rd place game: the loser of seed 1&rsquo;s round 2 game against the consolation winner.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="court">
+    <h2 id="court">On the court</h2>
+    <h3>Possession</h3>
+    <ul>
+      <li>After a made basket, possession is either make-it-take-it or alternating. The organizer announces which before the first game.</li>
+      <li>After a defensive rebound or a steal, clear the ball past the arc before you can score.</li>
+      <li>Restart dead balls with a check at the top.</li>
+    </ul>
+    <h3>Fouls</h3>
+    <ul>
+      <li>Players call their own fouls.</li>
+      <li>Team foul bonus, if the organizer turns it on: from a team&rsquo;s 6th foul in a game onward, each foul gives the other team a bonus possession.</li>
+    </ul>
+    <h3>Clock and score</h3>
+    <ul>
+      <li>The sitting team runs both clocks and both scoreboards.</li>
+    </ul>
+  </section>
+
+  <footer><a href="./">Back to scores</a></footer>
+</main>
+</body>
+</html>

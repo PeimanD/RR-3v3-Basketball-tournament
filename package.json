@@ -1,0 +1,7 @@
+{
+  "name": "3v3-round-robin",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "description": "Round robin tournament tracker: public read-only page, organizer sign-in, settings."
+}

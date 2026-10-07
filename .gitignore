@@ -1,0 +1,6 @@
+# Vercel CLI project link and pulled secrets. Never commit these.
+.vercel
+.env
+.env.*
+node_modules
+.DS_Store
